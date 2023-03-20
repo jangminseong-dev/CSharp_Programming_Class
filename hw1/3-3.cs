@@ -17,8 +17,6 @@ namespace std
                 int num = int.Parse(item);
                 if (!hw3_result.Contains(num)) hw3_result.Add(num);
             }
-            // foreach (int num in hw3_result)
-            //     Console.Write(num + " ");
 
             Console.WriteLine($"{String.Join(", ", hw3_result)}");
             Console.ReadKey();
