@@ -1,7 +1,4 @@
-# CSharp_Programming_Class
-
-## 한남대학교 3학년 .NET 프로그래밍 수업
-
+# 한남대학교 3학년 .NET 프로그래밍 수업
 ### 개발환경
 VSCode for Mac (Ventura 13.2.1, M1 Pro)
 ---
