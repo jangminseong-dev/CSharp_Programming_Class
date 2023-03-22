@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
+#pragma warning disable 0168
+#pragma warning disable 8600
+#pragma warning disable 8604
+#pragma warning disable 8602
+
 namespace std
 {
     public class Program
     {
         public static void Main(string[] args)
         {
+            int test;
             //1번 문제
             int sum = 0;
             for (int j = 1; j <= 1000; j++)
