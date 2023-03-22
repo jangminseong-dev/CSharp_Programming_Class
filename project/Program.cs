@@ -8,98 +8,102 @@ namespace std
         public static void Main(string[] args)
         {
             //1번 문제
-            string hw1_str = "";
-            Console.Write("Enter Integer : ");
-            hw1_str = Console.ReadLine();
-            if (Regex.Replace(hw1_str, @"[^0-9]", "") != "")
+            int sum = 0;
+            for (int j = 1; j <= 1000; j++)
             {
-                if (int.Parse(hw1_str) > 0)
-                    Console.WriteLine(hw1_str + " is positive number.");
-                else if (int.Parse(hw1_str) < 0)
-                    Console.WriteLine(hw1_str + " is negative number.");
-                else
-                    Console.WriteLine(hw1_str + " is Zero.");
+                if (j % 3 == 0 || j % 5 == 0)
+                {
+                    sum += j;
+                }
             }
-            else
-                Console.WriteLine("Error: Input is only integer.");
-            Console.ReadKey();
+            Console.WriteLine("Reuslt : " + sum.ToString());
 
             //2번 문제
-            Console.Write("Enter String : ");
-            string hw2_str = Console.ReadLine();
-            int count = 0;
-
-            foreach(char ch in hw2_str.ToLower())
+            for (int i = 1; i <= 100; i++)
             {
-                if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
-                    count++;
+                if (i % 3 == 0 && i % 5 == 0)
+                    Console.Write("FizzBuzz ");
+                else if (i % 3 == 0)
+                    Console.Write("Fizz ");
+                else if (i % 5 == 0)
+                    Console.Write("Buzz ");
             }
-            Console.WriteLine("The number of vowels is " + count.ToString());
-            Console.ReadKey();
+            Console.Write("\n");
 
             //3번 문제
-            Console.Write("Enter Integers(스페이스로 구분) : ");
-            string hw3_str = Console.ReadLine();
-            var nums = hw3_str.Split(' ');
-            List<int> hw3_result = new List<int>();
+            int n = 30;
+            int[] fib = new int[n];
 
-            foreach (string item in nums)
-            {
-                int num = int.Parse(item);
-                if (!hw3_result.Contains(num)) hw3_result.Add(num);
-            }
-            // foreach (int num in hw3_result)
-            //     Console.Write(num + " ");
+            fib[0] = 0;
+            fib[1] = 1;
 
-            Console.WriteLine($"{String.Join(", ", hw3_result)}");
-            Console.ReadKey();
+            for (int i = 2; i < n; i++)
+                fib[i] = fib[i - 1] + fib[i - 2];
+
+            for (int i = 0; i < n; i++)
+                Console.WriteLine("fibonacci({0}) = {1}", i, fib[i]);
 
             //4번 문제
-            Console.Write("Enter Sentense : ");
-            string hw4_str = Console.ReadLine();
-
-            var words = hw4_str.Split(' ');
-            var wordCounts = new Dictionary<string, int>();
-
-            foreach (var word in words)
+            Console.Write("Enter Integer : ");
+            int num4 = int.Parse(Console.ReadLine());
+            for (int i = 1; i <= num4; i++)
             {
-                if (wordCounts.ContainsKey(word)) wordCounts[word]++;
-                else wordCounts.Add(word, 1);
+                if (num4 % i == 0)
+                    Console.Write(i.ToString() + " ");
             }
-
-            var mostCommonWord = wordCounts.Aggregate((l, r) => l.Value > r.Value ? l : r).Key;
-            var mostCommonCount = wordCounts[mostCommonWord];
-            
-            Console.WriteLine(mostCommonWord.ToString() + " / " + mostCommonCount.ToString());
-            Console.ReadKey();
+            Console.Write("\n");
 
             //5번 문제
-            Console.Write("Enter Integers(스페이스로 구분) : ");
-            string hw5_str = Console.ReadLine();
-            int[] hw5_result = Array.ConvertAll(hw5_str.Split(' '), int.Parse);
-
-            Array.Sort(hw5_result);
-            Console.WriteLine($"{String.Join(", ", hw5_result)}");
-            Console.ReadKey();
+            Console.Write("Enter Integer : ");
+            int result5 = 1, num5 = int.Parse(Console.ReadLine());
+            for (int i = 2; i <= num5; i++)
+                result5 *= i;
+            Console.WriteLine("Reuslt : " + result5.ToString());
 
             //6번 문제
-            Console.Write("Enter Sentense : ");
-            string hw6_str = Console.ReadLine();
-            string hw6_result = Regex.Replace(hw6_str, @"\d", "");
-            Console.WriteLine($"{hw6_result.ToUpper()}");
-            Console.ReadKey();
+            int result6 = 0;
+            for (int i = 2; i <= 100; i++)
+            {
+                bool isPrime = true;
+                for (int j = 2; j < i; j++)
+                {
+                    if (i % j == 0)
+                    {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                
+                if (isPrime)
+                    result6 += i;
+            }
+            Console.WriteLine("Result = " + result6.ToString());
 
             //7번 문제
-            string hw7_str = "";
-            Console.Write("Enter Integer : ");
-            hw7_str = Console.ReadLine();
-            if (Regex.Replace(hw7_str, @"[^0-9]", "") != "")
+            Console.Write("Enter String : ");
+            string str7 = Console.ReadLine().ToLower();
+
+            int[] array = new int[26];
+            
+            foreach (char c in str7)
             {
-                Console.WriteLine(Convert.ToString(int.Parse(hw7_str), 2));
+                if (char.IsLetter(c))
+                    array[c - 'a']++;
             }
-            else
-                Console.WriteLine("Error: Input is only integer.");
-            Console.ReadKey();
+            int result7 = Array.IndexOf(array, array.Max());
+            Console.WriteLine("Result : {0}",(char)('a' + result7));
+
+            //8번 문제
+            Console.Write("Enter String : ");
+            string str8 = Console.ReadLine();
+            string[] array8 = str8.Split(' ');
+
+            for (int i = 0; i < array8.Length; i++)
+            {
+                if (!string.IsNullOrEmpty(array8[i]))
+                    array8[i] = array8[i][0].ToString().ToUpper() + array8[i].Substring(1);
+            }
+            Console.WriteLine($"{String.Join(" ", array8)}");
         }
     }
 }
